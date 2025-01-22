@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Color Palette Generator</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background-color: #f9f9f9;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      h1 {
+        font-size: 20px;
+        margin-bottom: 10px;
+      }
+      textarea {
+        width: 400px;
+        height: 200px;
+        margin-bottom: 10px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        resize: none;
+        font-size: 14px;
+      }
+      button {
+        padding: 12px 24px;
+        font-size: 16px;
+        color: #fff;
+        background-color: #007bff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Generate Color Palette Frames</h1>
+    <textarea
+      id="csvInput"
+      placeholder="Enter Name, HEX (one per line)&#10;e.g., Swamp Green,C3E246"
+    ></textarea>
+    <button id="generate">Generate Frames</button>
+    <script>
+      document.getElementById("generate").onclick = () => {
+        const csvData = document.getElementById("csvInput").value;
+        parent.postMessage({ pluginMessage: { type: "generate-frames", csvData } }, "*");
+      };
+    </script>
+  </body>
+</html>
